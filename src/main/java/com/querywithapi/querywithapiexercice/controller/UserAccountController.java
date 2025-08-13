@@ -32,13 +32,34 @@ public class UserAccountController {
 
     return ResponseEntity.status(HttpStatus.ACCEPTED).body(newUserAccount); }
 
-
   @GetMapping("/showAllUserAccounts")
   public ResponseEntity<?> getAllUsersAccounts (){
     List<UserAccountDtoReturn> list = userAccountImpl.getAllUserAccounts();
 
     return ResponseEntity.status(HttpStatus.ACCEPTED).body(list);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   @GetMapping("/getUserAccountById/{id}")
   public ResponseEntity<?> getUserAccountById (@PathVariable Long id){
