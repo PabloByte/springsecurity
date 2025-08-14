@@ -48,6 +48,9 @@ public class UserAccount {
   @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL)
   private List<Loan> loan= new ArrayList<>();
 
+  @Column(nullable = false)
+private boolean enabled = true;
+
 
   @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -137,6 +140,14 @@ public class UserAccount {
 
   public void setAdmin(boolean admin) {
     this.admin = admin;
+  }
+
+  public boolean isEnabled() {
+    return enabled;
+  }
+
+  public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
   }
 
 
