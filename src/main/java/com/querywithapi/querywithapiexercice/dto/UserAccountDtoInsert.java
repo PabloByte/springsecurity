@@ -4,18 +4,31 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Transient;
+
 public class UserAccountDtoInsert {
 
     private String userName;
 
   private String email;
 
+   
+  private String password;
+
+   @Transient
+  private boolean admin;
+
   @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private LocalDate registeredAt;
 
-  public UserAccountDtoInsert(String userName, String email, LocalDate registeredAt) {
+ 
+
+  public UserAccountDtoInsert(String userName, String email, String password, boolean admin, LocalDate registeredAt) {
     this.userName = userName;
     this.email = email;
+    this.password = password;
+    this.admin = admin;
     this.registeredAt = registeredAt;
   }
 
@@ -45,6 +58,25 @@ public class UserAccountDtoInsert {
   public void setRegisteredAt(LocalDate registeredAt) {
     this.registeredAt = registeredAt;
   }
+
+  public boolean isAdmin() {
+    return admin;
+  }
+
+  public void setAdmin(boolean admin) {
+    this.admin = admin;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+
+  
 
   
 
