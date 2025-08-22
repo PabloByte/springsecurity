@@ -3,14 +3,16 @@ package com.querywithapi.querywithapiexercice.dto;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.querywithapi.querywithapiexercice.validations.ExistsByEmail;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Transient;
 
 public class UserAccountDtoInsert {
 
     private String userName;
 
+  @ExistsByEmail
   private String email;
 
    

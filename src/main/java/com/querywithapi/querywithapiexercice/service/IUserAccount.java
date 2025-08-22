@@ -15,6 +15,8 @@ public interface IUserAccount {
  void deleteUserAccount (Long id);
  UserAccount validateUserAccount (Long id);
 
+ Boolean existsByEmail (String email);
+
 
 
 
