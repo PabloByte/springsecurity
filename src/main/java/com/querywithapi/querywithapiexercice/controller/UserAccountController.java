@@ -16,6 +16,8 @@ import com.querywithapi.querywithapiexercice.dto.UserAccountDtoInsert;
 import com.querywithapi.querywithapiexercice.dto.UserAccountDtoReturn;
 import com.querywithapi.querywithapiexercice.service.UserAccountImpl;
 
+import jakarta.validation.Valid;
+
 @RequestMapping("/apiUserAccount")
 @RestController
 public class UserAccountController {
@@ -26,11 +28,33 @@ public class UserAccountController {
     this.userAccountImpl = userAccountImpl;
   }
 
+
+  //este es privado
   @PostMapping("/createUserAccount")
   public ResponseEntity<?> createUserAccount ( @RequestBody UserAccountDtoInsert userAccount ){
     UserAccountDtoReturn newUserAccount = userAccountImpl.createUserAccount(userAccount);
 
-    return ResponseEntity.status(HttpStatus.ACCEPTED).body(newUserAccount); }
+    return ResponseEntity.status(HttpStatus.ACCEPTED).body(newUserAccount); 
+  }
+
+
+
+    //ESTE ES PUBLICO
+   @PostMapping("/registerUserAccount")
+  public ResponseEntity<?> registerUserAccount ( @Valid  @RequestBody UserAccountDtoInsert userAccount ){
+    userAccount.setAdmin(false);
+    UserAccountDtoReturn newUserAccount = userAccountImpl.createUserAccount(userAccount);
+
+    return ResponseEntity.status(HttpStatus.ACCEPTED).body(newUserAccount); 
+  }
+
+
+
+
+
+
+
+
 
   @GetMapping("/showAllUserAccounts")
   public ResponseEntity<?> getAllUsersAccounts (){

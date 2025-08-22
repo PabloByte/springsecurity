@@ -101,7 +101,13 @@ public class UserAccountImpl implements IUserAccount {
   return validUserAccount;
   }
 
-  
+  @Override
+  public Boolean existsByEmail(String email) {
+    return userAccountRepository.existsByEmail(email);
+
+  }
+
+
 
 
 
